@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 10.2, "left": -19.8, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 46.7,
+      "left": 412.6,
+      "attrs": { "label": "Potentiometer" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_start",
+      "top": -93.69,
+      "left": 198.82,
+      "attrs": { "color": "green", "label": "Green LED" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_scan",
+      "top": -92.51,
+      "left": 259.67,
+      "attrs": { "color": "yellow", "label": "Yellow LED" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_shutdown",
+      "top": -90.67,
+      "left": 317,
+      "attrs": { "color": "red", "label": "Red LED" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -205.2,
+      "left": 13.4,
+      "attrs": { "color": "blue", "label": "H-Bridge DIRECTION" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": -205.2,
+      "left": -34.6,
+      "attrs": { "color": "magenta", "label": "H-Bridge ENABLE" }
+    }
+  ],
+  "connections": [
+    [ "pot1:GND", "uno:GND.2", "black", [ "v13", "h-40" ] ],
+    [
+      "pot1:SIG",
+      "uno:A0",
+      "green",
+      [ "v14", "h0.03", "v51.31", "h-132.37", "v1.47", "h-53.49" ]
+    ],
+    [ "uno:VIN", "pot1:VCC", "red", [ "v20", "h76", "v79", "h-33" ] ],
+    [ "uno:2", "led_start:A", "green", [ "v0" ] ],
+    [ "led_scan:C", "uno:GND.1", "green", [ "h-19.73", "v18.4", "h-139.44" ] ],
+    [ "led_start:C", "uno:GND.1", "green", [ "v0.95", "h-98.32" ] ],
+    [ "led_shutdown:C", "uno:GND.1", "green", [ "h-13.21", "v25.07", "h-203.29" ] ],
+    [ "led_scan:A", "uno:3", "green", [ "h24.1", "v37.33", "h-81.77" ] ],
+    [ "led_shutdown:A", "uno:4", "green", [ "h14.35", "v41.75", "h-138.85" ] ],
+    [ "uno:9", "led1:A", "green", [ "v0" ] ],
+    [ "led1:C", "uno:GND.1", "green", [ "v8.45", "h-34.58" ] ],
+    [ "led2:A", "uno:10", "green", [ "v19.2", "h163.1" ] ],
+    [ "led2:C", "uno:GND.1", "green", [ "v28.8", "h135.1" ] ]
+  ],
+  "serialMonitor": { "display": "plotter" },
+  "dependencies": {}
+}
